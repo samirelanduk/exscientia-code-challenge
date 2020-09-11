@@ -1,0 +1,27 @@
+.file-input {
+    border: 1px dashed $border-color;
+    padding: $gap-6 $gap-5;
+    color: $text-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 100%;
+    cursor: pointer;
+
+    img {
+        width: 50px;
+        display: block;
+        margin-bottom: $gap-3;
+        cursor: pointer;
+    }
+
+    label {
+        cursor: pointer;
+    }
+
+    input {
+        display: none;
+    }
+}
