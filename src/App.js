@@ -5,6 +5,7 @@ import FileInput from "./FileInput";
 import ProteinViewer from "./ProteinViewer";
 import LigandTable from "./LigandTable";
 import { sdfToLigands } from "./sdf";
+import Ligand2D from "./Ligand2D";
 
 const App = () => {
 
@@ -56,6 +57,8 @@ const App = () => {
         </div>
       </div>
 
+      {ligands && <Ligand2D ligand={ligands[selectedLigand]}/>}
+
       {pdbContents && ligands && (
         <ProteinViewer
           pdb={pdbContents} ligands={ligands}
@@ -70,7 +73,7 @@ const App = () => {
         >
           {ligands.map((ligand, index) => (
             <option key={index} value={index}>
-              {ligand.data["Molecule Name"]}
+              {ligand.properties["Molecule Name"]}
             </option>
           ))}
         </select>

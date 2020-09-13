@@ -8,7 +8,7 @@ const LigandTable = props => {
 
   const { ligand } = props;
 
-  const data = ligand.data;
+  const data = ligand.properties;
 
   // Get list of properties, sorted in case they aren't always in the same
   // order in the SDF file - and remove molecule name property

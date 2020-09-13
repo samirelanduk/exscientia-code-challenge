@@ -7,7 +7,8 @@ export const sdfToLigands = sdfString => {
   const ligandStrings = splitSdf(sdfString);
   return ligandStrings.map(ligandString => ({
     pdb: sdfLigandToPdbModel(ligandString),
-    data: sdfLigandToDataObject(ligandString)
+    properties: sdfLigandToPropertiesObject(ligandString),
+    sdfString: ligandString
   }));
 }
 
@@ -84,7 +85,7 @@ const coordinatesToPdbAtom = (coordinates, index) => {
   return `${record}${serial}  ${name} LIG A   1    ${x}${y}${z}  1.00                ${element}`
 }
 
-export const sdfLigandToDataObject = sdfLigand => {
+export const sdfLigandToPropertiesObject = sdfLigand => {
   /**
    * Converts the SDF file section corresponding to a single ligand to a data
    * object of its attributes.
