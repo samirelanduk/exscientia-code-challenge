@@ -34,13 +34,12 @@ const ProteinViewer = props => {
     // Load every ligand - store them all but only display one
     stage.components = [];
     ligandBlobs.map((blob, index) => {
-      stage.loadFile(blob, {ext: "pdb"}).then(component => {
+      return stage.loadFile(blob, {ext: "pdb"}).then(component => {
         stage.components.push(component);
         if (index === selectedLigand) {
           stage.rep = component.addRepresentation("ball+stick");
           component.autoView();
           stage.currentVisible = index;
-          console.log(stage.rep)
         }
       });
     });

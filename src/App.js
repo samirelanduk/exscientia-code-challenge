@@ -3,6 +3,7 @@ import proteinIcon from "./images/protein.svg"
 import moleculeIcon from "./images/molecule.svg"
 import FileInput from "./FileInput";
 import ProteinViewer from "./ProteinViewer";
+import LigandTable from "./LigandTable";
 import { sdfToLigands } from "./sdf";
 
 const App = () => {
@@ -74,6 +75,8 @@ const App = () => {
           ))}
         </select>
       )}
+
+      {ligands && <LigandTable ligand={ligands[selectedLigand]} />}
 
     </div>
   );
