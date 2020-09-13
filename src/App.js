@@ -3,13 +3,14 @@ import proteinIcon from "./images/protein.svg"
 import moleculeIcon from "./images/molecule.svg"
 import FileInput from "./FileInput";
 import ProteinViewer from "./ProteinViewer";
+import { sdfToPdbs } from "./sdf";
 
 const App = () => {
 
   const [pdbFileName, setPdbFileName] = useState("");
   const [pdbContents, setPdbContents] = useState(null);
   const [sdfFileName, setSdfFileName] = useState("");
-  const [sdfContents, setSdfContents] = useState(null);
+  const [ligandPdbs, setLigandPdbs] = useState(null);
 
   const pdbAdded = e => {
     /**
@@ -34,7 +35,8 @@ const App = () => {
     setSdfFileName(file.name);
     const reader = new FileReader();
     reader.readAsText(file, "UTF-8");
-    reader.onload = e => setSdfContents(e.target.result);
+    // NGL doesn't really support multi-ligand SDF files, so convert them to PDB
+    reader.onload = e => setLigandPdbs(sdfToPdbs(e.target.result));
   }
 
   return (
@@ -43,17 +45,17 @@ const App = () => {
         <div className="inputs">
           <FileInput
             icon={proteinIcon} onChange={pdbAdded} id="pdbFile"
-            filename={pdbFileName} text="Upload PDB file"
+            filename={pdbFileName} text="Upload PDB file" fileTypes=".pdb"
           />
           <FileInput
             icon={moleculeIcon} onChange={sdfAdded} id="sdfFile"
-            filename={sdfFileName} text="Upload SDF file"
+            filename={sdfFileName} text="Upload SDF file" fileTypes=".sdf"
           />
         </div>
       </div>
 
-      {pdbContents && sdfContents && (
-        <ProteinViewer pdb={pdbContents} />
+      {pdbContents && ligandPdbs && (
+        <ProteinViewer pdb={pdbContents} ligands={ligandPdbs} />
       )}
     </div>
   );
