@@ -1,0 +1,29 @@
+.app {
+    background-color: $back-black;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+
+    .options {
+        width: 200px;
+        position: absolute;
+        top: $gap-4;
+        left: $gap-4;
+        z-index: 2;
+    }
+
+    .ligands {
+        background-color: white;
+        overflow-y: scroll;
+
+        .ligand-selector {
+            margin: $gap-2;
+        }
+
+        .ligand-2D {
+            border-top: 1px solid $border-color;
+            border-bottom: 1px solid $border-color;
+        }
+    }
+}

@@ -13,7 +13,7 @@ const ProteinViewer = props => {
   useEffect(() => {
     // Create NGL stage if not done so already
     if (!stage) {
-      setStage(new Stage("ngl-container", {backgroundColor: "#ffffff"}));
+      setStage(new Stage("ngl-container", {backgroundColor: "#ffffff00"}));
       return;
     }
 
@@ -43,7 +43,12 @@ const ProteinViewer = props => {
         }
       });
     });
-  }, [stage])
+
+    // If the screen changes size, deal with it
+    const handleResize = () => stage.handleResize();
+    window.addEventListener("orientationchange", handleResize, false);
+    window.addEventListener("resize", handleResize, false);
+  }, [stage]);
 
   useEffect(() => {
     // The selected ligand has changed

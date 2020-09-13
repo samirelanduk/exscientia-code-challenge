@@ -1,7 +1,7 @@
 export const sdfToLigands = sdfString => {
   /**
    * Takes an SDF file string and converts each ligand in it to a PDB file
-   * string.
+   * string so that NGL can render it. It also extracts property metrics.
    */
 
   const ligandStrings = splitSdf(sdfString);

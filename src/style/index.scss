@@ -1,3 +1,9 @@
+@import "reset.scss";
 @import "presets.scss";
+@import "core.scss";
+@import "./App.scss";
+@import "./Options.scss";
 @import "./FileUpload.scss";
 @import "./ProteinViewer.scss";
+@import "./LigandSelector.scss";
+@import "./LigandTable.scss";

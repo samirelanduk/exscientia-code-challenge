@@ -14,12 +14,14 @@ const Ligand2D = props => {
     const chemViewer = new Kekule.ChemWidget.Viewer(
       document.getElementById("kekulaViewer")
     );
+
+    chemViewer.setDimension("400px", "300px");
     chemViewer.setChemObj(molecule);
   })
 
   return (
     <div className="ligand-2D">
-      <div id="kekulaViewer" data-widget="Kekule.ChemWidget.Viewer2D"/>
+      <div id="kekulaViewer" data-widget="Kekule.ChemWidget.Viewer2D" data-autofit="true"/>
     </div>
   );
 };
