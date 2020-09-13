@@ -8,6 +8,7 @@
     .selectors {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        gap: $gap-2;
 
         .property-selector {
             font-size: $font-size-2;

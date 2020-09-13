@@ -64,7 +64,9 @@ const App = () => {
             <LigandTable ligand={ligands[selectedLigand]} />
             <Ligand2D ligand={ligands[selectedLigand]}/>
             <LigandsChart
-              ligands={ligands} setSelectedLigand={setSelectedLigand}
+              ligands={ligands}
+              selectedLigand={selectedLigand}
+              setSelectedLigand={setSelectedLigand}
             />
           </div>
         </>

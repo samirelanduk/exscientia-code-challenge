@@ -14,15 +14,15 @@ function tooltipFormatter(tooltip) {
 }
 
 function pointClicked(e) {
-  console.log(e)
   e.point.series.chart.userOptions.setSelectedLigand(
-    e.point.index
+    e.point.ligandIndex
   );
 }
 
 const LigandsChart = props => {
 
-  const { ligands, setSelectedLigand } = props;
+  const { ligands, selectedLigand, setSelectedLigand } = props;
+  console.log(ligands[0].properties["Molecule Name"])
 
   const [property1, setProperty1] = useState(0);
   const [property2, setProperty2] = useState(1);
@@ -31,15 +31,17 @@ const LigandsChart = props => {
     ...Object.keys(curr.properties), ...prev], []))
   ].filter(property => property !== "Molecule Name").sort();
   
-  const data = ligands.map(ligand => [
-    parseFloat(ligand.properties[properties[property1]]),
-    parseFloat(ligand.properties[properties[property2]])
-  ]);
+  const data = ligands.map((ligand, index) => ({
+    x: parseFloat(ligand.properties[properties[property1]]),
+    y: parseFloat(ligand.properties[properties[property2]]),
+    color: index === selectedLigand ? "red" : "#ff710040",
+    ligandIndex: index
+  }));
 
   const options = {
     series: [{
       data, type: "scatter", events: {click: pointClicked},
-      cursor: "pointer", color: "#ff710080"
+      cursor: "pointer"
     }],
     chart: {zoomType: "xy", padding: 0},
     credits: {enabled: false},

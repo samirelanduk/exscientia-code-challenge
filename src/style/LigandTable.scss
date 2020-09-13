@@ -1,16 +1,18 @@
 .ligand-table {
-    margin: $gap-2 auto;
+    margin: $gap-2 $gap-2;
     border-collapse: collapse;
+    font-size: $font-size-2;
 
     tr {
 
         td {
-            padding: $gap-1;
+            padding: $gap-2 $gap-1;
         }
 
         td:nth-child(1) {
             font-weight: 600;
-            text-align: right;
+            text-align: left;
+            color: #c16216;
         }
 
         td:nth-child(2) {

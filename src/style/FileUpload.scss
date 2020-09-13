@@ -1,5 +1,5 @@
 .file-input {
-    border: 1px dashed $border-color;
+    display: block;
     padding: $gap-6 $gap-5;
     color: $text-color;
     display: flex;
@@ -8,12 +8,16 @@
     justify-content: center;
     height: 100px;
     cursor: pointer;
+    color: #8a766a;
+    font-weight: 500;
 
     img {
         width: 50px;
         display: block;
         margin-bottom: $gap-3;
         cursor: pointer;
+        opacity: 0.4;
+        transition: 0.4s;
     }
 
     label {
@@ -22,5 +26,11 @@
 
     input {
         display: none;
+    }
+}
+
+.file-input:hover {
+    img {
+        opacity: 0.9;
     }
 }

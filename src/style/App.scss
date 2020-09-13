@@ -17,6 +17,8 @@
         background-color: white;
         overflow-y: scroll;
         border-left: 2px solid $border-color;
+        width: 100%;
+        overflow-x: scroll;
 
         .ligand-selector {
             margin: $gap-2;
