@@ -11,6 +11,7 @@ const App = () => {
   const [pdbContents, setPdbContents] = useState(null);
   const [sdfFileName, setSdfFileName] = useState("");
   const [ligandPdbs, setLigandPdbs] = useState(null);
+  const [selectedLigand, setSelectedLigand] = useState(0);
 
   const pdbAdded = e => {
     /**
@@ -55,8 +56,21 @@ const App = () => {
       </div>
 
       {pdbContents && ligandPdbs && (
-        <ProteinViewer pdb={pdbContents} ligands={ligandPdbs} />
+        <ProteinViewer
+          pdb={pdbContents} ligands={ligandPdbs}
+          selectedLigand={selectedLigand} setSelectedLigand={setSelectedLigand}
+        />
       )}
+
+      {ligandPdbs && (
+        <select 
+          value={selectedLigand} 
+          onChange={e => setSelectedLigand(parseInt(e.target.value))}
+        >
+          {ligandPdbs.map((_, index) => <option key={index}>{index}</option>)}
+        </select>
+      )}
+
     </div>
   );
 };
