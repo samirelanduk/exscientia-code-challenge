@@ -3,14 +3,14 @@ import proteinIcon from "./images/protein.svg"
 import moleculeIcon from "./images/molecule.svg"
 import FileInput from "./FileInput";
 import ProteinViewer from "./ProteinViewer";
-import { sdfToPdbs } from "./sdf";
+import { sdfToLigands } from "./sdf";
 
 const App = () => {
 
   const [pdbFileName, setPdbFileName] = useState("");
   const [pdbContents, setPdbContents] = useState(null);
   const [sdfFileName, setSdfFileName] = useState("");
-  const [ligandPdbs, setLigandPdbs] = useState(null);
+  const [ligands, setLigands] = useState(null);
   const [selectedLigand, setSelectedLigand] = useState(0);
 
   const pdbAdded = e => {
@@ -37,7 +37,7 @@ const App = () => {
     const reader = new FileReader();
     reader.readAsText(file, "UTF-8");
     // NGL doesn't really support multi-ligand SDF files, so convert them to PDB
-    reader.onload = e => setLigandPdbs(sdfToPdbs(e.target.result));
+    reader.onload = e => setLigands(sdfToLigands(e.target.result));
   }
 
   return (
@@ -55,19 +55,23 @@ const App = () => {
         </div>
       </div>
 
-      {pdbContents && ligandPdbs && (
+      {pdbContents && ligands && (
         <ProteinViewer
-          pdb={pdbContents} ligands={ligandPdbs}
+          pdb={pdbContents} ligands={ligands}
           selectedLigand={selectedLigand} setSelectedLigand={setSelectedLigand}
         />
       )}
 
-      {ligandPdbs && (
+      {ligands && (
         <select 
           value={selectedLigand} 
           onChange={e => setSelectedLigand(parseInt(e.target.value))}
         >
-          {ligandPdbs.map((_, index) => <option key={index}>{index}</option>)}
+          {ligands.map((ligand, index) => (
+            <option key={index} value={index}>
+              {ligand.data["Molecule Name"]}
+            </option>
+          ))}
         </select>
       )}
 

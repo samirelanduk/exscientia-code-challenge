@@ -1,11 +1,14 @@
-export const sdfToPdbs = sdfString => {
+export const sdfToLigands = sdfString => {
   /**
    * Takes an SDF file string and converts each ligand in it to a PDB file
    * string.
    */
 
   const ligandStrings = splitSdf(sdfString);
-  return ligandStrings.map(sdfLigandToPdbModel);
+  return ligandStrings.map(ligandString => ({
+    pdb: sdfLigandToPdbModel(ligandString),
+    data: sdfLigandToDataObject(ligandString)
+  }));
 }
 
 
@@ -79,4 +82,20 @@ const coordinatesToPdbAtom = (coordinates, index) => {
   const z = coordinates[3].toString().padEnd(8, " ");
   const element = coordinates[0].toUpperCase().padStart(2, " ");
   return `${record}${serial}  ${name} LIG A   1    ${x}${y}${z}  1.00                ${element}`
+}
+
+export const sdfLigandToDataObject = sdfLigand => {
+  /**
+   * Converts the SDF file section corresponding to a single ligand to a data
+   * object of its attributes.
+   */
+
+  const lines = sdfLigand.split("\n");
+  const data = {};
+  for (let l = 0; l < lines.length - 1; l++) {
+    if (lines[l][0] === ">") {
+      data[lines[l].match(/<(.+?)>/)[1]] = lines[l + 1];
+    }
+  }
+  return data;
 }

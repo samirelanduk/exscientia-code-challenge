@@ -7,7 +7,7 @@ const ProteinViewer = props => {
    * The 3D display.
    */
 
-  const { pdb, ligands, selectedLigand, setSelectedLigand } = props;
+  const { pdb, ligands, selectedLigand } = props;
   const [stage, setStage] = useState(null);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const ProteinViewer = props => {
 
     // Turn ligand PDBs into file objects
     const ligandBlobs = ligands.map(
-      ligand => new Blob([ligand], {type: "application/octet-stream"})
+      ligand => new Blob([ligand.pdb], {type: "application/octet-stream"})
     );
 
     // Load the protein
