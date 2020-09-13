@@ -5,6 +5,7 @@ import { sdfToLigands } from "../sdf";
 import Ligand2D from "./Ligand2D";
 import LigandSelector from "./LigandSelector";
 import Options from "./Options";
+import LigandsChart from "./LigandsChart";
 
 const App = () => {
 
@@ -62,6 +63,9 @@ const App = () => {
             />
             <LigandTable ligand={ligands[selectedLigand]} />
             <Ligand2D ligand={ligands[selectedLigand]}/>
+            <LigandsChart
+              ligands={ligands} setSelectedLigand={setSelectedLigand}
+            />
           </div>
         </>
       )}

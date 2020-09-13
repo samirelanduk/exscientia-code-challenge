@@ -1,0 +1,22 @@
+.ligands-chart {
+    padding: $gap-3;
+
+    .highcharts-axis-labels, .highcharts-axis-title {
+        font-family: $font;
+    }
+
+    .selectors {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        .property-selector {
+            font-size: $font-size-2;
+            z-index: 10;
+            
+            * {
+                cursor: pointer;
+            }
+        }
+    }
+
+}
