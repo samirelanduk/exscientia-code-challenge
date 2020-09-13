@@ -10,11 +10,10 @@ const Ligand2D = props => {
   const { ligand } = props;
 
   useEffect(() => {
+    const container = document.getElementById("kekulaViewer");
     const molecule = Kekule.IO.loadFormatData(ligand.sdfString, "mol3k");
-    const chemViewer = new Kekule.ChemWidget.Viewer(
-      document.getElementById("kekulaViewer")
-    );
-
+    const chemViewer = new Kekule.ChemWidget.Viewer(container);
+    console.log(chemViewer)
     chemViewer.setDimension("400px", "300px");
     chemViewer.setChemObj(molecule);
   })
