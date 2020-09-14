@@ -3,10 +3,30 @@
     padding: $gap-3;
     border-radius: 5px;
     box-shadow: 0 7px 14px 0 rgba(60,66,87,.12), 0 3px 6px 0 rgba(0,0,0,.12);
-
+    transition: 0.4s;
 
     .inputs {
         display: grid;
         gap: $gap-6;
+    }
+}
+
+.options.smaller {
+    width: 120px;
+
+    .inputs {
+        gap: $gap-1;
+
+        .file-input {
+            padding: $gap-3 $gap-2;
+
+            img {
+                width: 40px;
+            }
+
+            label {
+                font-size: $font-size-2;
+            }
+        }
     }
 }

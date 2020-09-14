@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import proteinIcon from "../images/protein.svg"
 import moleculeIcon from "../images/molecule.svg"
 import FileInput from "./FileInput";
@@ -7,9 +8,13 @@ import FileInput from "./FileInput";
 const Options = props => {
 
   const { pdbAdded, pdbFileName, sdfAdded, sdfFileName } = props;
+
+  const className = classNames({
+    options: true, smaller: pdbFileName && sdfFileName
+  })
   
   return (
-    <div className="options">
+    <div className={className}>
       <div className="inputs">
         <FileInput
           icon={proteinIcon} onChange={pdbAdded} id="pdbFile"
