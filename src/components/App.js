@@ -6,6 +6,7 @@ import Ligand2D from "./Ligand2D";
 import LigandSelector from "./LigandSelector";
 import Options from "./Options";
 import LigandsChart from "./LigandsChart";
+import ProteinViewOptions from "./ProteinViewOptions";
 
 const App = () => {
 
@@ -14,6 +15,9 @@ const App = () => {
   const [sdfFileName, setSdfFileName] = useState("");
   const [ligands, setLigands] = useState(null);
   const [selectedLigand, setSelectedLigand] = useState(0);
+  const [ligandRep, setLigandRep] = useState("ball+stick");
+  const [targetRep, setTargetRep] = useState("cartoon");
+  console.log(targetRep)
 
   const pdbAdded = e => {
     /**
@@ -41,6 +45,8 @@ const App = () => {
     reader.onload = e => setLigands(sdfToLigands(e.target.result));
   }
 
+  
+
   return (
     <div className="app">
       
@@ -53,7 +59,9 @@ const App = () => {
         <>
           <ProteinViewer
             pdb={pdbContents} ligands={ligands}
-            selectedLigand={selectedLigand} setSelectedLigand={setSelectedLigand}
+            selectedLigand={selectedLigand}
+            setSelectedLigand={setSelectedLigand}
+            ligandRep={ligandRep} targetRep={targetRep}
           />
           <div className="ligands">
             <LigandSelector
@@ -69,6 +77,10 @@ const App = () => {
               setSelectedLigand={setSelectedLigand}
             />
           </div>
+          <ProteinViewOptions
+            ligandRep={ligandRep} setLigandRep={setLigandRep}
+            targetRep={targetRep} setTargetRep={setTargetRep}
+          />
         </>
       )}
     </div>

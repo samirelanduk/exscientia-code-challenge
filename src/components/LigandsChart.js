@@ -34,7 +34,7 @@ const LigandsChart = props => {
   const data = ligands.map((ligand, index) => ({
     x: parseFloat(ligand.properties[properties[property1]]),
     y: parseFloat(ligand.properties[properties[property2]]),
-    color: index === selectedLigand ? "red" : "#ff710040",
+    color: index === selectedLigand ? "#16a085" : "#ff710040",
     ligandIndex: index
   }));
 
