@@ -29,23 +29,29 @@ const ProteinViewOptions = props => {
 
   return (
     <div className="protein-view-options">
-      <Select
-        options={ligandReps}
-        value={ligandReps.filter(r => r.value === ligandRep)[0]}
-        onChange={e => setLigandRep(e.value)}
-        classNamePrefix="select"
-        className="ligand-rep-selector"
-        menuPlacement="top"
-      />
-
-      <Select
-        options={targetReps}
-        value={targetReps.filter(r => r.value === targetRep)[0]}
-        onChange={e => setTargetRep(e.value)}
-        classNamePrefix="select"
-        className="target-rep-selector"
-        menuPlacement="top"
-      />
+      <div className="option">
+        <label>Ligand</label>
+        <Select
+          options={ligandReps}
+          value={ligandReps.filter(r => r.value === ligandRep)[0]}
+          onChange={e => setLigandRep(e.value)}
+          classNamePrefix="select"
+          className="ligand-rep-selector"
+          menuPlacement="top"
+        />
+      </div>
+      
+      <div className="option">
+        <label>Target</label>
+        <Select
+          options={targetReps}
+          value={targetReps.filter(r => r.value === targetRep)[0]}
+          onChange={e => setTargetRep(e.value)}
+          classNamePrefix="select"
+          className="target-rep-selector"
+          menuPlacement="top"
+        />
+      </div>
     </div>
   );
 };
