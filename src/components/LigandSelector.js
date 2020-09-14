@@ -3,12 +3,15 @@ import PropTypes from "prop-types";
 import Select from "react-select";
 
 const LigandSelector = props => {
+  /**
+   * A widget for selecting the current ligand.
+   */
+
   const { ligands, selectedLigand, setSelectedLigand } = props;
 
   const options = ligands.map((ligand, index) => ({
     value: index, label: ligand.properties["Molecule Name"]
   }));
-
 
   return (
     <Select
@@ -20,23 +23,12 @@ const LigandSelector = props => {
       className="ligand-selector"
     />
   )
-
-  return (
-    <select 
-      value={selectedLigand} 
-      onChange={e => setSelectedLigand(parseInt(e.target.value))}
-    >
-      {ligands.map((ligand, index) => (
-        <option key={index} value={index}>
-          {ligand.properties["Molecule Name"]}
-        </option>
-      ))}
-    </select>
-  );
 };
 
 LigandSelector.propTypes = {
-  
+  ligands: PropTypes.array.isRequired,
+  selectedLigand: PropTypes.number.isRequired,
+  setSelectedLigand: PropTypes.func.isRequired
 };
 
 export default LigandSelector;

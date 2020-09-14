@@ -78,7 +78,8 @@ ProteinViewer.propTypes = {
   pdb: PropTypes.string.isRequired,
   ligands: PropTypes.array.isRequired,
   selectedLigand: PropTypes.number.isRequired,
-  setSelectedLigand: PropTypes.func.isRequired
+  ligandRep: PropTypes.string.isRequired,
+  targetRep: PropTypes.string.isRequired,
 };
 
 export default ProteinViewer;

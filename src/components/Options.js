@@ -6,6 +6,9 @@ import moleculeIcon from "../images/molecule.svg"
 import FileInput from "./FileInput";
 
 const Options = props => {
+  /**
+   * The data input for the tool.
+   */
 
   const { pdbAdded, pdbFileName, sdfAdded, sdfFileName } = props;
 
@@ -30,7 +33,10 @@ const Options = props => {
 };
 
 Options.propTypes = {
-  
+  pdbAdded: PropTypes.func.isRequired,
+  pdbFileName: PropTypes.string.isRequired,
+  sdfAdded: PropTypes.func.isRequired,
+  sdfFileName: PropTypes.string.isRequired
 };
 
 export default Options;

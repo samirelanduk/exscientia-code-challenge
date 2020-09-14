@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import Select from "react-select";
 
 const ProteinViewOptions = props => {
+  /**
+   * An interface for changing how the 3D display looks.
+   */
+
   const { ligandRep, setLigandRep, targetRep, setTargetRep } = props;
 
   const ligandReps = [{
@@ -47,7 +51,10 @@ const ProteinViewOptions = props => {
 };
 
 ProteinViewOptions.propTypes = {
-  
+  ligandRep: PropTypes.string.isRequired,
+  setLigandRep: PropTypes.func.isRequired,
+  targetRep: PropTypes.string.isRequired,
+  setTargetRep: PropTypes.func.isRequired,
 };
 
 export default ProteinViewOptions;

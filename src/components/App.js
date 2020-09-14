@@ -17,7 +17,6 @@ const App = () => {
   const [selectedLigand, setSelectedLigand] = useState(0);
   const [ligandRep, setLigandRep] = useState("ball+stick");
   const [targetRep, setTargetRep] = useState("cartoon");
-  console.log(targetRep)
 
   const pdbAdded = e => {
     /**

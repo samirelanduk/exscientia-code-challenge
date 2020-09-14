@@ -20,6 +20,9 @@ function pointClicked(e) {
 }
 
 const LigandsChart = props => {
+  /**
+   * A summary of all the ligands along any two dimensions.
+   */
 
   const { ligands, selectedLigand, setSelectedLigand } = props;
   console.log(ligands[0].properties["Molecule Name"])
@@ -27,7 +30,7 @@ const LigandsChart = props => {
   const [property1, setProperty1] = useState(0);
   const [property2, setProperty2] = useState(1);
 
-  const properties = [... new Set(ligands.reduce((prev, curr) => [
+  const properties = [...new Set(ligands.reduce((prev, curr) => [
     ...Object.keys(curr.properties), ...prev], []))
   ].filter(property => property !== "Molecule Name").sort();
   
@@ -92,7 +95,9 @@ const LigandsChart = props => {
 };
 
 LigandsChart.propTypes = {
-  
+  ligands: PropTypes.array.isRequired,
+  selectedLigand: PropTypes.number.isRequired,
+  setSelectedLigand: PropTypes.func.isRequired
 };
 
 export default LigandsChart;
